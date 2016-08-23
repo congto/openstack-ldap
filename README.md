@@ -113,6 +113,6 @@ http://10.0.0.X/dashboard
 
 you will get successfully login.
 
-Cheers !!
+Cheers!!
 
 
