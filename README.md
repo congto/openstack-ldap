@@ -104,8 +104,15 @@ openstack role add --project procloud --user d210ae253c4e3f2e60894b899b7d9a7699a
 
 # Because user is available on LDAP server with name "ldapuser1"Openstack-controller identify it by ids.
 
-# Now you are 
+# Now you are able to access dashboard with ldap user, Access your dashmoard
+
+http://10.0.0.X/dashboard
+
+# put your login creadential of ldapuser & the domain name created on controller "ëxample"
 
 
+you will get successfully login.
+
+Cheers !!
 
 
