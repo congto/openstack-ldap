@@ -52,3 +52,60 @@ user_allow_delete = false
 group_allow_create = false
 group_allow_update = false
 group_allow_delete = false
+
+:wq ( save & exit )
+
+# The above keystone.example.conf file details can be found from LDAP server by running following command on ldap server.
+
+# Run the below command on LDAP server
+
+ldapsearch -x -b 'dc=example,dc=com' '(objectclass=*)'
+
+# Back on your controller node.
+
+# Restart the keystone service ( in my case keystone service is sync with httpd )
+
+systemctl restart httpd
+
+# Now create a domain on your controller node 
+# Set your admin envir. on controller node.
+
+openstack domain create example
+
+# Create the project within that domain
+
+openstack project create procloud --domain example
+
+# create a role
+
+openstack role create ladmin
+
+# Add the ladmin role to the procloud project and user:
+
+openstack role add --project procloud --user ldapuser1 ladmin
+
+# If it says user not found then add it's id which you can see by the runningh below cmnd.
+
+openstack user show ldapuser1 --example
+
+The details show like this 
+
++-----------+------------------------------------------------------------------+
+| Field     | Value                                                            |
++-----------+------------------------------------------------------------------+
+| domain_id | 83ca640dd0b14947a40f9046d1f84aff                                 |
+| id        | d210ae253c4e3f2e60894b899b7d9a7699afd8a8054586c2736a94a9afe82e47 |
+| name      | ldapuser1                                                        |
++-----------+------------------------------------------------------------------+
+
+# So you can use user id instead of name "ldapuser1", find the example below
+
+openstack role add --project procloud --user d210ae253c4e3f2e60894b899b7d9a7699afd8a8054586c2736a94a9afe82e47 ladmin
+
+# Because user is available on LDAP server with name "ldapuser1"Openstack-controller identify it by ids.
+
+# Now you are 
+
+
+
+
