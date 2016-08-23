@@ -29,7 +29,7 @@ driver = sql
 
 [ldap]
 url = ldap://ldap server ip or hostname
-user = cn=Manager,dc=example,dc=com
+user = cn=Manager,dc=example,dc=com 
 password = badpasswd
 query_scope = sub
 
